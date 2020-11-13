@@ -1,5 +1,5 @@
 module.exports = {
-  displayName: 'samples-webcomponents',
+  displayName: 'samples-wc-angular',
   preset: '../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
@@ -14,7 +14,7 @@ module.exports = {
       },
     },
   },
-  coverageDirectory: '../../../coverage/apps/samples/webcomponents',
+  coverageDirectory: '../../../coverage/apps/samples/wc-angular',
   snapshotSerializers: [
     'jest-preset-angular/build/AngularNoNgAttributesSnapshotSerializer.js',
     'jest-preset-angular/build/AngularSnapshotSerializer.js',
