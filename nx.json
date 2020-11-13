@@ -18,7 +18,12 @@
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
       "options": {
-        "cacheableOperations": ["build", "lint", "test", "e2e"]
+        "cacheableOperations": [
+          "build",
+          "lint",
+          "test",
+          "e2e"
+        ]
       }
     }
   },
@@ -29,12 +34,14 @@
     "wc-fabric-angular": {
       "tags": []
     },
-    "samples-webcomponents": {
+    "samples-wc-angular": {
       "tags": []
     },
-    "samples-webcomponents-e2e": {
+    "samples-wc-angular-e2e": {
       "tags": [],
-      "implicitDependencies": ["samples-webcomponents"]
+      "implicitDependencies": [
+        "samples-wc-angular"
+      ]
     }
   }
 }
