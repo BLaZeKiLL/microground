@@ -28,6 +28,13 @@
     },
     "wc-fabric-angular": {
       "tags": []
+    },
+    "samples-webcomponents": {
+      "tags": []
+    },
+    "samples-webcomponents-e2e": {
+      "tags": [],
+      "implicitDependencies": ["samples-webcomponents"]
     }
   }
 }
