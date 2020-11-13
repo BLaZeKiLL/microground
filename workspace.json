@@ -31,6 +31,44 @@
           }
         }
       }
+    },
+    "wc-fabric-angular": {
+      "projectType": "library",
+      "root": "libs/wc-fabric/angular",
+      "sourceRoot": "libs/wc-fabric/angular/src",
+      "prefix": "microground",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:package",
+          "options": {
+            "tsConfig": "libs/wc-fabric/angular/tsconfig.lib.json",
+            "project": "libs/wc-fabric/angular/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/wc-fabric/angular/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/wc-fabric/angular/src/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/wc-fabric/angular/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
     }
   },
   "cli": {

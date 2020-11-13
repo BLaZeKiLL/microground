@@ -25,6 +25,9 @@
   "projects": {
     "wc-fabric-core": {
       "tags": []
+    },
+    "wc-fabric-angular": {
+      "tags": []
     }
   }
 }

@@ -26,8 +26,12 @@
     "help": "nx help"
   },
   "private": true,
-  "dependencies": {},
+  "dependencies": {
+    "tslib": "^2.0.0"
+  },
   "devDependencies": {
+    "@angular-devkit/build-angular": "~0.1001.7",
+    "@angular/compiler-cli": "~10.1.6",
     "@nrwl/angular": "^10.3.3",
     "@nrwl/cli": "10.3.3",
     "@nrwl/eslint-plugin-nx": "10.3.3",
@@ -43,6 +47,8 @@
     "eslint": "7.10.0",
     "eslint-config-prettier": "6.0.0",
     "jest": "26.2.2",
+    "jest-preset-angular": "8.3.1",
+    "ng-packagr": "^10.1.0",
     "prettier": "2.0.4",
     "ts-jest": "26.4.0",
     "ts-node": "~7.0.0",
