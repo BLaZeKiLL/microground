@@ -22,5 +22,9 @@
       }
     }
   },
-  "projects": {}
+  "projects": {
+    "wc-fabric-core": {
+      "tags": []
+    }
+  }
 }
