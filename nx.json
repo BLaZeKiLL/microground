@@ -22,5 +22,19 @@
       }
     }
   },
-  "projects": {}
+  "projects": {
+    "wc-fabric-core": {
+      "tags": []
+    },
+    "wc-fabric-angular": {
+      "tags": []
+    },
+    "samples-webcomponents": {
+      "tags": []
+    },
+    "samples-webcomponents-e2e": {
+      "tags": [],
+      "implicitDependencies": ["samples-webcomponents"]
+    }
+  }
 }

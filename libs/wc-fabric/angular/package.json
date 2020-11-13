@@ -1,0 +1,13 @@
+{
+  "name": "@codeblaze/wc-fabric-angular",
+  "version": "0.0.1",
+  "author": "codeblaze",
+  "license": "MIT",
+  "peerDependencies": {
+    "@angular/common": "^10.1.6",
+    "@angular/core": "^10.1.6"
+  },
+  "dependencies": {
+    "tslib": "^2.0.0"
+  }
+}

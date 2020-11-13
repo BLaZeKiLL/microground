@@ -15,7 +15,10 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@codeblaze/wc-fabric-core": ["libs/wc-fabric/core/src/index.ts"],
+      "@codeblaze/wc-fabric-angular": ["libs/wc-fabric/angular/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
