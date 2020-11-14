@@ -1,0 +1,12 @@
+{
+  "$schema": "../../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "name": "nx-webcomponent",
+  "version": "0.0.1",
+  "schematics": {
+    "nx-webcomponent": {
+      "factory": "./src/schematics/nx-webcomponent/schematic",
+      "schema": "./src/schematics/nx-webcomponent/schema.json",
+      "description": "nx-webcomponent schematic"
+    }
+  }
+}
