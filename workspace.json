@@ -10,9 +10,7 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "libs/wc-fabric/core/**/*.ts"
-            ]
+            "lintFilePatterns": ["libs/wc-fabric/core/**/*.ts"]
           }
         },
         "test": {
@@ -29,9 +27,7 @@
             "tsConfig": "libs/wc-fabric/core/tsconfig.lib.json",
             "packageJson": "libs/wc-fabric/core/package.json",
             "main": "libs/wc-fabric/core/src/index.ts",
-            "assets": [
-              "libs/wc-fabric/core/*.md"
-            ]
+            "assets": ["libs/wc-fabric/core/*.md"]
           }
         }
       }
@@ -57,9 +53,7 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "libs/wc-fabric/angular/src/**/*.ts"
-            ]
+            "lintFilePatterns": ["libs/wc-fabric/angular/src/**/*.ts"]
           }
         },
         "test": {
@@ -102,9 +96,7 @@
               "apps/samples/wc-angular/src/favicon.ico",
               "apps/samples/wc-angular/src/assets"
             ],
-            "styles": [
-              "apps/samples/wc-angular/src/styles.scss"
-            ],
+            "styles": ["apps/samples/wc-angular/src/styles.scss"],
             "scripts": [
               "node_modules/rxjs/bundles/rxjs.umd.js",
               "node_modules/@angular/core/bundles/core.umd.js",
@@ -148,14 +140,9 @@
           }
         },
         "serve": {
-          "builder": "ngx-build-plus:dev-server",
+          "builder": "./dist/libs/nx-webcomponent:serve",
           "options": {
-            "browserTarget": "samples-wc-angular:build"
-          },
-          "configurations": {
-            "production": {
-              "browserTarget": "samples-wc-angular:build:production"
-            }
+            "buildTarget": "samples-wc-angular:build"
           }
         },
         "extract-i18n": {
@@ -167,9 +154,7 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/samples/wc-angular/src/**/*.ts"
-            ]
+            "lintFilePatterns": ["apps/samples/wc-angular/src/**/*.ts"]
           }
         },
         "test": {
@@ -202,9 +187,71 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/samples/wc-angular-e2e/**/*.{js,ts}"
+            "lintFilePatterns": ["apps/samples/wc-angular-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    },
+    "nx-webcomponent": {
+      "root": "libs/nx-webcomponent",
+      "sourceRoot": "libs/nx-webcomponent/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/nx-webcomponent/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/nx-webcomponent/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "outputPath": "dist/libs/nx-webcomponent",
+            "tsConfig": "libs/nx-webcomponent/tsconfig.lib.json",
+            "packageJson": "libs/nx-webcomponent/package.json",
+            "main": "libs/nx-webcomponent/src/index.ts",
+            "assets": [
+              "libs/nx-webcomponent/*.md",
+              {
+                "input": "./libs/nx-webcomponent/src",
+                "glob": "**/*.!(ts)",
+                "output": "./src"
+              },
+              {
+                "input": "./libs/nx-webcomponent",
+                "glob": "collection.json",
+                "output": "."
+              },
+              {
+                "input": "./libs/nx-webcomponent",
+                "glob": "builders.json",
+                "output": "."
+              }
             ]
+          }
+        }
+      }
+    },
+    "nx-webcomponent-e2e": {
+      "projectType": "application",
+      "root": "apps\\nx-webcomponent-e2e",
+      "sourceRoot": "apps\\nx-webcomponent-e2e/src",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/nx-plugin:e2e",
+          "options": {
+            "target": "nx-webcomponent:build",
+            "npmPackageName": "@microground/nx-webcomponent",
+            "pluginOutputPath": "dist/libs/nx-webcomponent",
+            "jestConfig": "apps/nx-webcomponent-e2e/jest.config.js"
           }
         }
       }
