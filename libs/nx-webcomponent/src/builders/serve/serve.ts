@@ -13,22 +13,27 @@ import { map, switchMap } from 'rxjs/operators';
 
 import { ServeBuilderSchema } from './schema';
 
-export default createBuilder((_options : ServeBuilderSchema, context : BuilderContext) => {
-  const buildTarget = targetFromTargetString(`${context.target.project}:build`);
+export default createBuilder((options : ServeBuilderSchema, context : BuilderContext) => {
+  const buildTarget = targetFromTargetString(options.buildTarget);
 
-  // use webpack dev server
+  // use @nrwl/web plugin
   return from(context.getTargetOptions(buildTarget))
     .pipe(
       switchMap(build => {
         const http_server = `${path.join(context.workspaceRoot, 'node_modules', '.bin', 'http-server')}`;
         const http_root = `${path.join(context.workspaceRoot, build.outputPath as string)}`;
 
-        const server = cp.spawn(http_server, [http_root, '-p 3200', '-a localhost', '-s'], { cwd: __dirname, shell: true });
+        const args = [http_root, `-p ${options.port}`, `-a ${options.host}`];
 
-        //server.stdout.on('data', data => context.logger.info(data.toString()));
+        if (options.silent) {
+          args.push('-s');
+          context.logger.info(`\x1b[33mServing : \x1b[0m\x1b[34m${http_root}\x1b[0m`);
+          context.logger.info(`\x1b[33mAvailable on : \x1b[0m\x1b[32mhttp://${options.host}:${options.port}\x1b[0m`);
+        }
 
-        context.logger.info(`\x1b[33mServing : \x1b[0m\x1b[34m${http_root}\x1b[0m`);
-        context.logger.info(`\x1b[33mAvailable on : \x1b[0m\x1b[32mhttp://localhost:3200\x1b[0m`);
+        const server = cp.spawn(http_server, args, { cwd: __dirname, shell: true });
+
+        if (!options.silent) server.stdout.on('data', data => context.logger.info(data.toString()));
 
         return concat(
           new Observable<unknown>(observer => {
@@ -40,7 +45,7 @@ export default createBuilder((_options : ServeBuilderSchema, context : BuilderCo
           scheduleTargetAndForget(
             context,
             buildTarget,
-            { watch: true }
+            { watch: options.watch }
           ),
         ).pipe(
           map(([ build_context, server_context ]) => ({ success: build_context.success && server_context.success }))

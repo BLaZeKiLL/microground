@@ -140,7 +140,10 @@
           }
         },
         "serve": {
-          "builder": "./dist/libs/nx-webcomponent:serve"
+          "builder": "./dist/libs/nx-webcomponent:serve",
+          "options": {
+            "buildTarget": "samples-wc-angular:build"
+          }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",

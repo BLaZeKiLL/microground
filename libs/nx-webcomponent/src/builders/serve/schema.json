@@ -4,6 +4,31 @@
   "title": "Serve builder",
   "description": "",
   "type": "object",
-  "properties": {},
+  "properties": {
+    "buildTarget": {
+      "type": "string",
+      "description": "Target which builds the application"
+    },
+    "port": {
+      "type": "integer",
+      "description": "Port to listen on",
+      "default": 3200
+    },
+    "host": {
+      "type": "string",
+      "description": "Host to listen on",
+      "default": "localhost"
+    },
+    "silent": {
+      "type": "boolean",
+      "description": "http server logging",
+      "default": true
+    },
+    "watch": {
+      "type": "boolean",
+      "description": "Watches for changes and rebuilds application",
+      "default": true
+    }
+  },
   "required": []
 }
