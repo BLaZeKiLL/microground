@@ -22,3 +22,9 @@ This project uses [Nx](https://nx.dev).
 - web components
   - generator - create web component porjects with build configured
   - serve - locally serve web component project
+
+### TODO's
+- angular webcomponent project schematic
+- tests for libs
+- github actions ci/cd
+- dcoasaurus docs
