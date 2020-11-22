@@ -70,10 +70,10 @@ function modifyFiles(options: NormalizedSchema): Rule {
  * - create angular application
  * - modify build and serve targets and scripts array
  * - update nx.json
- * - install angular elements
- * - run angular elements install schematic on the new project
+ * - install angular elements, webcomponent pollyfills
  * - modify files
  *  - add webpack.config.js
+ *  - modify pollyfils
  *  - modify app module
  * @param options
  */
