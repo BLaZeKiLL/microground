@@ -8,21 +8,22 @@ import {
   Rule,
   url,
 } from '@angular-devkit/schematics';
+
 import {
   addProjectToNxJsonInTree,
+  addDepsToPackageJson,
   names,
   offsetFromRoot,
   projectRootDir,
   ProjectType,
   toFileName,
+  addPackageWithInit,
   updateWorkspace,
 } from '@nrwl/workspace';
-import { NxWebcomponentSchematicSchema } from './schema';
 
-/**
- * Depending on your needs, you can change this to either `Library` or `Application`
- */
-const projectType = ProjectType.Library;
+import { angularVersion } from '@nrwl/angular/src/utils/versions'; // read from json instead
+
+import { NxWebcomponentSchematicSchema } from './schema';
 
 interface NormalizedSchema extends NxWebcomponentSchematicSchema {
   projectName: string;
@@ -39,7 +40,7 @@ function normalizeOptions(
     ? `${toFileName(options.directory)}/${name}`
     : name;
   const projectName = projectDirectory.replace(new RegExp('/', 'g'), '-');
-  const projectRoot = `${projectRootDir(projectType)}/${projectDirectory}`;
+  const projectRoot = `${projectRootDir(ProjectType.Application)}/${projectDirectory}`;
   const parsedTags = options.tags
     ? options.tags.split(',').map((s) => s.trim())
     : [];
@@ -71,23 +72,29 @@ function modifyFiles(options: NormalizedSchema): Rule {
  * - modify build and serve targets and scripts array
  * - update nx.json
  * - install angular elements, webcomponent pollyfills
+ * - run @angular/elements ng-add schematic
  * - modify files
  *  - add webpack.config.js
- *  - modify pollyfils
  *  - modify app module
- * @param options
+ * @param input
  */
-export default function (options: NxWebcomponentSchematicSchema): Rule {
-  const normalizedOptions = normalizeOptions(options);
+export default function (input: NxWebcomponentSchematicSchema): Rule {
+  const options = normalizeOptions(input);
+
   return chain([
     externalSchematic('@nrwl/angular', 'application', {
-      name: normalizedOptions.projectName,
-      root: normalizedOptions.projectRoot,
-      sourceRoot: `${normalizedOptions.projectRoot}/src`,
-      projectType,
+      name: options.projectName,
+      root: options.projectRoot,
+      sourceRoot: `${options.projectRoot}/src`,
     }),
-    updateWorkspace((workspace) => { // update workspace.json
-      const project = workspace.projects.get(normalizedOptions.projectName);
+    addDepsToPackageJson({
+      '@angular/elements' : angularVersion
+    }, {
+      'ngx-build-plus' : '*',
+      'http-server' : '*'
+    }),
+    updateWorkspace((workspace) => {
+      const project = workspace.projects.get(options.projectName);
 
       const build_target = project.targets.get('build');
 
@@ -100,7 +107,21 @@ export default function (options: NxWebcomponentSchematicSchema): Rule {
       project.targets.add({
         name: 'build',
         builder: 'ngx-build-plus:browser',
-        options: t_options,
+        options: {
+          ...t_options,
+          singleBundle: true,
+          //extraWebpackConfig: `${options.projectRoot}/webpack.config.js`,
+          scripts: [
+            "node_modules/rxjs/bundles/rxjs.umd.js",
+            "node_modules/@angular/core/bundles/core.umd.js",
+            "node_modules/@angular/common/bundles/common.umd.js",
+            "node_modules/@angular/common/bundles/common-http.umd.js",
+            "node_modules/@angular/compiler/bundles/compiler.umd.js",
+            "node_modules/@angular/elements/bundles/elements.umd.js",
+            "node_modules/@angular/platform-browser/bundles/platform-browser.umd.js",
+            "node_modules/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js"
+          ]
+        },
         configurations: t_config
       });
 
@@ -108,14 +129,14 @@ export default function (options: NxWebcomponentSchematicSchema): Rule {
         name: 'serve',
         builder: '@microground/nx-webcomponent:serve',
         options: {
-          buildTarget: `${normalizedOptions.projectName}:build`
+          buildTarget: `${options.projectName}:build`
         }
       });
     }),
-    addProjectToNxJsonInTree(normalizedOptions.projectName, { // update nx.json
-      tags: normalizedOptions.parsedTags,
+    addProjectToNxJsonInTree(options.projectName, {
+      tags: options.parsedTags,
     }),
-    // generate angular project
-    modifyFiles(normalizedOptions), // add custom files
+    externalSchematic('@angular/elements', 'ng-add', { project: options.projectName }),
+    modifyFiles(options),
   ]);
 }

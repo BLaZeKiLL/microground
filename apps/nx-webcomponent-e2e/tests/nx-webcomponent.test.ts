@@ -1,5 +1,4 @@
 import {
-  checkFilesExist,
   ensureNxProject,
   readJson,
   runNxCommandAsync,
@@ -8,10 +7,8 @@ import {
 
 describe('nx-webcomponent e2e', () => {
 
-  it('should create nx-webcomponent application', async (done) => {
+  it('should create nx-webcomponent application and be able to build it', async (done) => {
     const plugin = uniq('webcomponents');
-
-    console.log(`E2E name : ${plugin}`);
 
     ensureNxProject(
       '@microground/nx-webcomponent',
@@ -24,51 +21,16 @@ describe('nx-webcomponent e2e', () => {
 
     const result = await runNxCommandAsync(`build ${plugin}`);
 
-    expect(result.stdout).toContain('Builder ran');
+    expect(result.stdout).toContain(`nx build ${plugin}`);
+    expect(result.stdout).toContain('chunk {main} main.js, main.js.map (main)');
+    expect(result.stdout).toContain('chunk {polyfills} polyfills.js, polyfills.js.map (polyfills)');
+    expect(result.stdout).toContain('chunk {styles} styles.js, styles.js.map (styles)');
+    expect(result.stdout).toContain('chunk {scripts} scripts.js, scripts.js.map (scripts)');
+    expect(result.stdout).toContain('Done');
+
+    expect(readJson('nx.json').projects[plugin].tags).toEqual(['e2etag', 'e2ePackage']);
 
     done();
-  }, 100000);
-
-  // describe('--directory', () => {
-  //   it('should create src in the specified directory', async (done) => {
-  //     const plugin = uniq('nx-webcomponent');
-
-  //     ensureNxProject(
-  //       '@microground/nx-webcomponent',
-  //       'dist/libs/nx-webcomponent'
-  //     );
-
-  //     await runNxCommandAsync(
-  //       `generate @microground/nx-webcomponent:application ${plugin} --directory subdir`
-  //     );
-
-  //     expect(() =>
-  //       checkFilesExist(`libs/subdir/${plugin}/src/index.ts`)
-  //     ).not.toThrow();
-
-  //     done();
-  //   });
-  // });
-
-  // describe('--tags', () => {
-  //   it('should add tags to nx.json', async (done) => {
-  //     const plugin = uniq('nx-webcomponent');
-
-  //     ensureNxProject(
-  //       '@microground/nx-webcomponent',
-  //       'dist/libs/nx-webcomponent'
-  //     );
-
-  //     await runNxCommandAsync(
-  //       `generate @microground/nx-webcomponent:application ${plugin} --tags e2etag,e2ePackage`
-  //     );
-
-  //     const nxJson = readJson('nx.json');
-
-  //     expect(nxJson.projects[plugin].tags).toEqual(['e2etag', 'e2ePackage']);
-
-  //     done();
-  //   });
-  // });
+  }, 500000);
 
 });
