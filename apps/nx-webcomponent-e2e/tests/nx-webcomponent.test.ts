@@ -19,6 +19,8 @@ describe('nx-webcomponent e2e', () => {
       `generate @microground/nx-webcomponent:application ${plugin}`
     );
 
+    expect(Object.keys(readJson('nx.json').projects)).toContain(plugin);
+
     const result = await runNxCommandAsync(`build ${plugin}`);
 
     expect(result.stdout).toContain(`nx build ${plugin}`);
@@ -27,8 +29,6 @@ describe('nx-webcomponent e2e', () => {
     expect(result.stdout).toContain('chunk {styles} styles.js, styles.js.map (styles)');
     expect(result.stdout).toContain('chunk {scripts} scripts.js, scripts.js.map (scripts)');
     expect(result.stdout).toContain('Done');
-
-    expect(readJson('nx.json').projects[plugin].tags).toEqual(['e2etag', 'e2ePackage']);
 
     done();
   }, 500000);

@@ -54,7 +54,7 @@ function normalizeOptions(
   };
 }
 
-function modifyFiles(options: NormalizedSchema): Rule {
+function addFiles(options: NormalizedSchema): Rule {
   return mergeWith(
     apply(url(`./files`), [
       applyTemplates({
@@ -110,7 +110,7 @@ export default function (input: NxWebcomponentSchematicSchema): Rule {
         options: {
           ...t_options,
           singleBundle: true,
-          //extraWebpackConfig: `${options.projectRoot}/webpack.config.js`,
+          extraWebpackConfig: `${options.projectRoot}/webpack.config.js`,
           scripts: [
             "node_modules/rxjs/bundles/rxjs.umd.js",
             "node_modules/@angular/core/bundles/core.umd.js",
@@ -137,6 +137,6 @@ export default function (input: NxWebcomponentSchematicSchema): Rule {
       tags: options.parsedTags,
     }),
     externalSchematic('@angular/elements', 'ng-add', { project: options.projectName }),
-    modifyFiles(options),
+    addFiles(options),
   ]);
 }
