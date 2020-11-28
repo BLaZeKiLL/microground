@@ -7,6 +7,7 @@ import {
   move,
   Rule,
   url,
+  MergeStrategy
 } from '@angular-devkit/schematics';
 
 import {
@@ -17,11 +18,10 @@ import {
   projectRootDir,
   ProjectType,
   toFileName,
-  addPackageWithInit,
-  updateWorkspace,
+  updateWorkspace
 } from '@nrwl/workspace';
 
-import { angularVersion } from '@nrwl/angular/src/utils/versions'; // read from json instead
+import { angularVersion } from '@nrwl/angular/src/utils/versions'; // read from package.json instead
 
 import { NxWebcomponentSchematicSchema } from './schema';
 
@@ -63,7 +63,8 @@ function addFiles(options: NormalizedSchema): Rule {
         offsetFromRoot: offsetFromRoot(options.projectRoot),
       }),
       move(options.projectRoot),
-    ])
+    ]),
+    MergeStrategy.Overwrite
   );
 }
 
@@ -76,7 +77,7 @@ function addFiles(options: NormalizedSchema): Rule {
  * - modify files
  *  - add webpack.config.js
  *  - modify app module
- * @param input
+ * @param input scheamtic execution options
  */
 export default function (input: NxWebcomponentSchematicSchema): Rule {
   const options = normalizeOptions(input);
@@ -137,6 +138,6 @@ export default function (input: NxWebcomponentSchematicSchema): Rule {
       tags: options.parsedTags,
     }),
     externalSchematic('@angular/elements', 'ng-add', { project: options.projectName }),
-    addFiles(options),
+    addFiles(options)
   ]);
 }
