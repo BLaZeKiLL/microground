@@ -1,0 +1,29 @@
+name: Pull Request
+
+on:
+  pull_request:
+    branches:
+    - master
+    types: [opened, reopened, synchronize]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12'
+      - name: Enviornment Setup
+        run: yarn install --frozen-lockfile
+      - name: Lint
+        run: yarn run affected:lint
+      - name: Build
+        run: yarn run affected:build
+      - name: Test
+        run: yarn run affected:test
+      - name: E2E
+        run: yarn run affected:e2e
+
