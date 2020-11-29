@@ -28,7 +28,6 @@ describe('nx-webcomponent e2e', () => {
     expect(result.stdout).toContain('chunk {polyfills} polyfills.js, polyfills.js.map (polyfills)');
     expect(result.stdout).toContain('chunk {styles} styles.js, styles.js.map (styles)');
     expect(result.stdout).toContain('chunk {scripts} scripts.js, scripts.js.map (scripts)');
-    expect(result.stdout).toContain('Done');
 
     done();
   }, 500000);
