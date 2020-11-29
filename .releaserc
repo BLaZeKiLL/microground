@@ -1,26 +1,73 @@
 {
   "plugins": [
-    ["@semantic-release/commit-analyzer", {
-      "preset": "angular",
-      "releaseRules": [
-        {"type": "refactor", "release": "patch"},
-        {"type": "release", "release": "major"}
-      ]
-    }],
+    [
+      "@semantic-release/commit-analyzer",
+      {
+        "preset": "angular",
+        "releaseRules": [
+          {
+            "type": "refactor",
+            "release": "patch"
+          },
+          {
+            "type": "release",
+            "release": "major"
+          }
+        ]
+      }
+    ],
     "@semantic-release/release-notes-generator",
-    ["@semantic-release/changelog", { "preset": "angular" }],
+    [
+      "@semantic-release/changelog",
+      {
+        "preset": "angular"
+      }
+    ],
+
     [
       "@semantic-release/npm",
-      { "npmPublish": true, "pkgRoot": "./dist/libs/nx-webcomponent" }
+      {
+        "npmPublish": true,
+        "pkgRoot": "./dist/libs/nx-webcomponent"
+      }
     ],
     [
       "@semantic-release/npm",
-      { "npmPublish": true, "pkgRoot": "./dist/libs/wc-fabric/angular" }
+      {
+        "npmPublish": true,
+        "pkgRoot": "./dist/libs/wc-fabric/angular"
+      }
     ],
     [
       "@semantic-release/npm",
-      { "npmPublish": true, "pkgRoot": "./dist/libs/wc-fabric/core" }
+      {
+        "npmPublish": true,
+        "pkgRoot": "./dist/libs/wc-fabric/core"
+      }
     ],
+
+    [
+      "@semantic-release/npm",
+      {
+        "npmPublish": false,
+        "pkgRoot": "./libs/nx-webcomponent"
+      }
+    ],
+    [
+      "@semantic-release/npm",
+      {
+        "npmPublish": false,
+        "pkgRoot": "./libs/wc-fabric/angular"
+      }
+    ],
+    [
+      "@semantic-release/npm",
+      {
+        "npmPublish": false,
+        "pkgRoot": "./libs/wc-fabric/core"
+      }
+    ],
+
     [
       "@semantic-release/git",
       {

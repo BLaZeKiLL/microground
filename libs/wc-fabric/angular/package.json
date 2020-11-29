@@ -3,6 +3,9 @@
   "version": "0.0.0",
   "author": "codeblaze",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "peerDependencies": {
     "@angular/common": "^10.1.6",
     "@angular/core": "^10.1.6"

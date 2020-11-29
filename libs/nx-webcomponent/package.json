@@ -1,9 +1,12 @@
 {
-  "name": "@microground/nx-webcomponent",
+  "name": "@codeblaze/nx-webcomponent",
   "version": "0.0.0",
   "main": "src/index.js",
   "schematics": "./collection.json",
   "builders": "./builders.json",
+  "publishConfig": {
+    "access": "public"
+  },
   "peerDependencies": {
     "@nrwl/workspace": "*"
   },
