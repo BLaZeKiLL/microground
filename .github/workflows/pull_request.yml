@@ -31,7 +31,7 @@ jobs:
             ${{ runner.os }}-yarn-
 
       - name: Enviornment Setup
-        run: yarn install --frozen-lockfile
+        run: yarn install --frozen-lockfile --prefer-offline
 
       - name: Lint
         run: yarn run affected:lint --base=remotes/origin/master
