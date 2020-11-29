@@ -7,15 +7,17 @@ on:
     types: [opened, reopened, synchronize]
 
 jobs:
-  build:
+  Test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
+
       - uses: actions/setup-node@v1
         with:
           node-version: '12'
+
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
@@ -27,14 +29,19 @@ jobs:
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
+
       - name: Enviornment Setup
         run: yarn install --frozen-lockfile
+
       - name: Lint
         run: yarn run affected:lint --base=remotes/origin/master
+
       - name: Build
         run: yarn run affected:build --base=remotes/origin/master
+
       - name: Test
         run: yarn run affected:test --base=remotes/origin/master
+
       - name: E2E
         run: yarn run affected:e2e --base=remotes/origin/master
 
