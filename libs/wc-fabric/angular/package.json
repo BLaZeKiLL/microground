@@ -1,6 +1,6 @@
 {
   "name": "@codeblaze/wc-fabric-angular",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "author": "codeblaze",
   "license": "MIT",
   "peerDependencies": {
