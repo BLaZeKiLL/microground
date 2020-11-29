@@ -19,11 +19,11 @@ jobs:
       - name: Enviornment Setup
         run: yarn install --frozen-lockfile
       - name: Lint
-        run: yarn run affected:lint
+        run: yarn run affected:lint --base=remotes/origin/master
       - name: Build
-        run: yarn run affected:build
+        run: yarn run affected:build --base=remotes/origin/master
       - name: Test
-        run: yarn run affected:test
+        run: yarn run affected:test --base=remotes/origin/master
       - name: E2E
-        run: yarn run affected:e2e
+        run: yarn run affected:e2e --base=remotes/origin/master
 
