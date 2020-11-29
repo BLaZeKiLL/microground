@@ -1,0 +1,37 @@
+{
+  "plugins": [
+    ["@semantic-release/commit-analyzer", {
+      "preset": "angular",
+      "releaseRules": [
+        {"type": "refactor", "release": "patch"},
+        {"type": "release", "release": "major"}
+      ]
+    }],
+    "@semantic-release/release-notes-generator",
+    ["@semantic-release/changelog", { "preset": "angular" }],
+    [
+      "@semantic-release/npm",
+      { "npmPublish": true, "pkgRoot": "./dist/libs/nx-webcomponent" }
+    ],
+    [
+      "@semantic-release/npm",
+      { "npmPublish": true, "pkgRoot": "./dist/libs/wc-fabric/angular" }
+    ],
+    [
+      "@semantic-release/npm",
+      { "npmPublish": true, "pkgRoot": "./dist/libs/wc-fabric/core" }
+    ],
+    [
+      "@semantic-release/git",
+      {
+        "assets": [
+          "./libs/nx-webcomponent/package.json",
+          "./libs/wc-fabric/angular/package.json",
+          "./libs/wc-fabric/core/package.json",
+          "CHANGELOG.md"
+        ],
+        "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
+      }
+    ]
+  ]
+}
