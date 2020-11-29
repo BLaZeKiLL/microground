@@ -54,7 +54,7 @@ function normalizeOptions(
   };
 }
 
-function addFiles(options: NormalizedSchema): Rule {
+function updateFiles(options: NormalizedSchema): Rule {
   return mergeWith(
     apply(url(`./files`), [
       applyTemplates({
@@ -138,6 +138,6 @@ export default function (input: NxWebcomponentSchematicSchema): Rule {
       tags: options.parsedTags,
     }),
     externalSchematic('@angular/elements', 'ng-add', { project: options.projectName }),
-    addFiles(options)
+    updateFiles(options)
   ]);
 }
