@@ -1,6 +1,6 @@
 {
   "name": "@codeblaze/wc-fabric-core",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "author": "codeblaze",
   "license": "MIT",
   "publishConfig": {
