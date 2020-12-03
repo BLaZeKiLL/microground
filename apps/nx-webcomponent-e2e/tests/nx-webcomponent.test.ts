@@ -11,12 +11,12 @@ describe('nx-webcomponent e2e', () => {
     const plugin = uniq('webcomponents');
 
     ensureNxProject(
-      '@microground/nx-webcomponent',
+      '@codeblaze/nx-webcomponent',
       'dist/libs/nx-webcomponent'
     );
 
     await runNxCommandAsync(
-      `generate @microground/nx-webcomponent:application ${plugin}`
+      `generate @codeblaze/nx-webcomponent:application ${plugin}`
     );
 
     expect(Object.keys(readJson('nx.json').projects)).toContain(plugin);

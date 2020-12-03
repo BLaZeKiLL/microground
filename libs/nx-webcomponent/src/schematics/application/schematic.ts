@@ -128,7 +128,7 @@ export default function (input: NxWebcomponentSchematicSchema): Rule {
 
       project.targets.add({
         name: 'serve',
-        builder: '@microground/nx-webcomponent:serve',
+        builder: '@codeblaze/nx-webcomponent:serve',
         options: {
           buildTarget: `${options.projectName}:build`
         }

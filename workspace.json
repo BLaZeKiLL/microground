@@ -249,7 +249,7 @@
           "builder": "@nrwl/nx-plugin:e2e",
           "options": {
             "target": "nx-webcomponent:build",
-            "npmPackageName": "@microground/nx-webcomponent",
+            "npmPackageName": "@codeblaze/nx-webcomponent",
             "pluginOutputPath": "dist/libs/nx-webcomponent",
             "jestConfig": "apps/nx-webcomponent-e2e/jest.config.js"
           }
