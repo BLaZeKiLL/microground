@@ -32,10 +32,6 @@
     "samples-wc-angular": {
       "tags": []
     },
-    "samples-wc-angular-e2e": {
-      "tags": [],
-      "implicitDependencies": ["samples-wc-angular"]
-    },
     "nx-webcomponent": {
       "tags": []
     },

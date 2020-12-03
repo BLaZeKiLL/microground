@@ -166,32 +166,6 @@
         }
       }
     },
-    "samples-wc-angular-e2e": {
-      "root": "apps/samples/wc-angular-e2e",
-      "sourceRoot": "apps/samples/wc-angular-e2e/src",
-      "projectType": "application",
-      "architect": {
-        "e2e": {
-          "builder": "@nrwl/cypress:cypress",
-          "options": {
-            "cypressConfig": "apps/samples/wc-angular-e2e/cypress.json",
-            "tsConfig": "apps/samples/wc-angular-e2e/tsconfig.e2e.json",
-            "devServerTarget": "samples-wc-angular:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "samples-wc-angular:serve:production"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["apps/samples/wc-angular-e2e/**/*.{js,ts}"]
-          }
-        }
-      }
-    },
     "nx-webcomponent": {
       "root": "libs/nx-webcomponent",
       "sourceRoot": "libs/nx-webcomponent/src",
@@ -249,7 +223,7 @@
           "builder": "@nrwl/nx-plugin:e2e",
           "options": {
             "target": "nx-webcomponent:build",
-            "npmPackageName": "@microground/nx-webcomponent",
+            "npmPackageName": "@codeblaze/nx-webcomponent",
             "pluginOutputPath": "dist/libs/nx-webcomponent",
             "jestConfig": "apps/nx-webcomponent-e2e/jest.config.js"
           }

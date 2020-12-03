@@ -6,10 +6,6 @@
         "preset": "angular",
         "releaseRules": [
           {
-            "type": "refactor",
-            "release": "patch"
-          },
-          {
             "type": "release",
             "release": "major"
           }
