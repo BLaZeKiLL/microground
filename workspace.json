@@ -10,7 +10,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/wc-fabric/core/**/*.ts"]
+            "lintFilePatterns": [
+              "libs/wc-fabric/core/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -27,7 +29,9 @@
             "tsConfig": "libs/wc-fabric/core/tsconfig.lib.json",
             "packageJson": "libs/wc-fabric/core/package.json",
             "main": "libs/wc-fabric/core/src/index.ts",
-            "assets": ["libs/wc-fabric/core/*.md"]
+            "assets": [
+              "libs/wc-fabric/core/*.md"
+            ]
           }
         }
       }
@@ -53,7 +57,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/wc-fabric/angular/src/**/*.ts"]
+            "lintFilePatterns": [
+              "libs/wc-fabric/angular/src/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -96,7 +102,9 @@
               "apps/samples/wc-angular/src/favicon.ico",
               "apps/samples/wc-angular/src/assets"
             ],
-            "styles": ["apps/samples/wc-angular/src/styles.scss"],
+            "styles": [
+              "apps/samples/wc-angular/src/styles.scss"
+            ],
             "scripts": [
               "node_modules/rxjs/bundles/rxjs.umd.js",
               "node_modules/@angular/core/bundles/core.umd.js",
@@ -154,7 +162,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/samples/wc-angular/src/**/*.ts"]
+            "lintFilePatterns": [
+              "apps/samples/wc-angular/src/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -162,6 +172,36 @@
           "options": {
             "jestConfig": "apps/samples/wc-angular/jest.config.js",
             "passWithNoTests": true
+          }
+        },
+        "storybook": {
+          "builder": "@nrwl/storybook:storybook",
+          "options": {
+            "uiFramework": "@storybook/angular",
+            "port": 4400,
+            "config": {
+              "configFolder": "apps/samples/wc-angular/.storybook"
+            }
+          },
+          "configurations": {
+            "ci": {
+              "quiet": true
+            }
+          }
+        },
+        "build-storybook": {
+          "builder": "@nrwl/storybook:build",
+          "options": {
+            "uiFramework": "@storybook/angular",
+            "outputPath": "dist/storybook/samples-wc-angular",
+            "config": {
+              "configFolder": "apps/samples/wc-angular/.storybook"
+            }
+          },
+          "configurations": {
+            "ci": {
+              "quiet": true
+            }
           }
         }
       }
@@ -175,7 +215,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/nx-webcomponent/**/*.ts"]
+            "lintFilePatterns": [
+              "libs/nx-webcomponent/**/*.ts"
+            ]
           }
         },
         "test": {
