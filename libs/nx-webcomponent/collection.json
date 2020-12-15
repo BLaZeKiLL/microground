@@ -4,8 +4,8 @@
   "version": "0.0.1",
   "schematics": {
     "application": {
-      "factory": "./src/schematics/application/schematic",
-      "schema": "./src/schematics/application/schema.json",
+      "factory": "./src/generators/application/schematic",
+      "schema": "./src/generators/application/schema.json",
       "description": "application schematic"
     }
   }

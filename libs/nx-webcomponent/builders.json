@@ -2,8 +2,8 @@
   "$schema": "../../node_modules/@angular-devkit/architect/src/builders-schema.json",
   "builders": {
     "serve": {
-      "implementation": "./src/builders/serve/serve",
-      "schema": "./src/builders/serve/schema.json",
+      "implementation": "./src/executors/serve/serve",
+      "schema": "./src/executors/serve/schema.json",
       "description": "serve builder"
     }
   }
