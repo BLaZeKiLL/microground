@@ -24,10 +24,12 @@ describe('nx-webcomponent e2e', () => {
     const result = await runNxCommandAsync(`build ${plugin}`);
 
     expect(result.stdout).toContain(`nx build ${plugin}`);
-    expect(result.stdout).toContain('chunk {main} main.js, main.js.map (main)');
-    expect(result.stdout).toContain('chunk {polyfills} polyfills.js, polyfills.js.map (polyfills)');
-    expect(result.stdout).toContain('chunk {styles} styles.js, styles.js.map (styles)');
-    expect(result.stdout).toContain('chunk {scripts} scripts.js, scripts.js.map (scripts)');
+    expect(result.stdout).toContain('scripts.js');
+    expect(result.stdout).toContain('polyfills.js');
+    expect(result.stdout).toContain('main.js');
+    expect(result.stdout).toContain('styles.js');
+    expect(result.stdout).not.toContain('vendor.js');
+    expect(result.stdout).not.toContain('runtime.js');
 
     done();
   }, 500000);

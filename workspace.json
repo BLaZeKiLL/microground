@@ -10,9 +10,7 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "libs/wc-fabric/core/**/*.ts"
-            ]
+            "lintFilePatterns": ["libs/wc-fabric/core/**/*.ts"]
           }
         },
         "test": {
@@ -20,7 +18,8 @@
           "options": {
             "jestConfig": "libs/wc-fabric/core/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/wc-fabric/core"]
         },
         "build": {
           "builder": "@nrwl/node:package",
@@ -29,10 +28,9 @@
             "tsConfig": "libs/wc-fabric/core/tsconfig.lib.json",
             "packageJson": "libs/wc-fabric/core/package.json",
             "main": "libs/wc-fabric/core/src/index.ts",
-            "assets": [
-              "libs/wc-fabric/core/*.md"
-            ]
-          }
+            "assets": ["libs/wc-fabric/core/*.md"]
+          },
+          "outputs": ["{options.outputPath}"]
         }
       }
     },
@@ -58,7 +56,15 @@
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
-              "libs/wc-fabric/angular/src/**/*.ts"
+              "libs/wc-fabric/angular/src/**/*.ts",
+              "libs/wc-fabric/angular/src/**/*.html",
+              "libs/wc-fabric/angular/src/**/*.html",
+              "libs/wc-fabric/angular/src/**/*.html",
+              "libs/wc-fabric/angular/src/**/*.html",
+              "libs/wc-fabric/angular/src/**/*.html",
+              "libs/wc-fabric/angular/src/**/*.html",
+              "libs/wc-fabric/angular/src/**/*.html",
+              "libs/wc-fabric/angular/src/**/*.html"
             ]
           }
         },
@@ -67,7 +73,8 @@
           "options": {
             "jestConfig": "libs/wc-fabric/angular/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/wc-fabric/angular"]
         }
       },
       "schematics": {
@@ -102,9 +109,7 @@
               "apps/samples/wc-angular/src/favicon.ico",
               "apps/samples/wc-angular/src/assets"
             ],
-            "styles": [
-              "apps/samples/wc-angular/src/styles.scss"
-            ],
+            "styles": ["apps/samples/wc-angular/src/styles.scss"],
             "scripts": [
               "node_modules/rxjs/bundles/rxjs.umd.js",
               "node_modules/@angular/core/bundles/core.umd.js",
@@ -163,7 +168,15 @@
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
-              "apps/samples/wc-angular/src/**/*.ts"
+              "apps/samples/wc-angular/src/**/*.ts",
+              "apps/samples/wc-angular/src/**/*.html",
+              "apps/samples/wc-angular/src/**/*.html",
+              "apps/samples/wc-angular/src/**/*.html",
+              "apps/samples/wc-angular/src/**/*.html",
+              "apps/samples/wc-angular/src/**/*.html",
+              "apps/samples/wc-angular/src/**/*.html",
+              "apps/samples/wc-angular/src/**/*.html",
+              "apps/samples/wc-angular/src/**/*.html"
             ]
           }
         },
@@ -172,7 +185,8 @@
           "options": {
             "jestConfig": "apps/samples/wc-angular/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/apps/samples/wc-angular"]
         },
         "storybook": {
           "builder": "@nrwl/storybook:storybook",
@@ -202,7 +216,8 @@
             "ci": {
               "quiet": true
             }
-          }
+          },
+          "outputs": ["{options.outputPath}"]
         }
       }
     },
@@ -215,9 +230,7 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "libs/nx-webcomponent/**/*.ts"
-            ]
+            "lintFilePatterns": ["libs/nx-webcomponent/**/*.ts"]
           }
         },
         "test": {
@@ -225,7 +238,8 @@
           "options": {
             "jestConfig": "libs/nx-webcomponent/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/nx-webcomponent"]
         },
         "build": {
           "builder": "@nrwl/node:package",
@@ -252,7 +266,8 @@
                 "output": "."
               }
             ]
-          }
+          },
+          "outputs": ["{options.outputPath}"]
         }
       }
     },

@@ -16,7 +16,7 @@ export class WcFabricModule {
             config.bundles.forEach(
               async (bundle) => await loadBundle(bundle.url, bundle.cache)
             );
-            console.info(`[WC-FABRIC] ${config.bundles.length} bundles loaded`);
+            console.log(`[WC-FABRIC] ${config.bundles.length} bundles loaded`);
           }
         }
       ]
