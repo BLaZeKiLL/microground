@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/BLaZeKiLL/microground/compare/v1.0.1...v1.1.0) (2020-12-15)
+
+
+### Features
+
+* Merge pull request [#10](https://github.com/BLaZeKiLL/microground/issues/10) from BLaZeKiLL/refac/nx-update ([a9140c8](https://github.com/BLaZeKiLL/microground/commit/a9140c875fc0d14e6bdfefe8674f3c74e2e5113b))
+
 ## [1.0.1](https://github.com/BLaZeKiLL/microground/compare/v1.0.0...v1.0.1) (2020-12-03)
 
 
