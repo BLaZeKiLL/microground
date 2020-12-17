@@ -169,13 +169,6 @@
           "options": {
             "lintFilePatterns": [
               "apps/samples/wc-angular/src/**/*.ts",
-              "apps/samples/wc-angular/src/**/*.html",
-              "apps/samples/wc-angular/src/**/*.html",
-              "apps/samples/wc-angular/src/**/*.html",
-              "apps/samples/wc-angular/src/**/*.html",
-              "apps/samples/wc-angular/src/**/*.html",
-              "apps/samples/wc-angular/src/**/*.html",
-              "apps/samples/wc-angular/src/**/*.html",
               "apps/samples/wc-angular/src/**/*.html"
             ]
           }
