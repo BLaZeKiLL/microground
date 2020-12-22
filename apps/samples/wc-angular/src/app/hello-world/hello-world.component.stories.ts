@@ -1,4 +1,4 @@
-import { text, number, boolean } from '@storybook/addon-knobs';
+import { text } from '@storybook/addon-knobs';
 import { HelloWorldComponent } from './hello-world.component';
 
 export default {

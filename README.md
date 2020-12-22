@@ -5,13 +5,11 @@ This project uses [Nx](https://nx.dev).
 ## Goals
 - libraries to consume webcomponents easily in web apps
 - easily scafold new webcomponent projects
-- handle build, development, deoploy workflow for web components
-- playground to test web components
-- api to locate web components
+- handle build, development, deploy workflow for web components
+- registry of web components, to deploy and configure web components
 
 ## Apps
-- microground - playground for web components
-- wc-locator - api to locate wc bundles to overcome cache busting
+- wc-registry - api to locate wc bundles to overcome cache busting
 
 ## Libs
 - wc-fabric
@@ -24,7 +22,5 @@ This project uses [Nx](https://nx.dev).
   - serve - locally serve web component project
 
 ### TODO's
-- angular webcomponent project schematic
-- tests for libs
-- github actions ci/cd
+- build config (provide extensible webpack config)
 - dcoasaurus docs
