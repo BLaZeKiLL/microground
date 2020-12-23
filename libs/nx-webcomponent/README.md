@@ -5,12 +5,12 @@
 ## Installing
 just run this in a nx workspace
 
-`npm install --save-dev @nrwl/angular @angular/elements @codeblaze/nx-webcomponent`
+`npm install --save-dev @codeblaze/nx-webcomponent`
 
-peer dependencies
-- `@nrwl/workspace` - will be installed in a nx workspace already
+dependencies (will be installed automaically)
 - `@nrwl/angular` - for creating angular projects using nx
 - `@angular/elements` - should be of the same version as angular that you are using
+- `ngx-build-plus` - build tool extension for angular cli
 
 ## Getting Started
 nx console is recommend for vs code

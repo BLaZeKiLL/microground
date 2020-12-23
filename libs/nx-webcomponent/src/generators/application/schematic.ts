@@ -12,13 +12,13 @@ import {
 
 import {
   addProjectToNxJsonInTree,
-  addDepsToPackageJson,
+  updatePackageJsonDependencies,
   names,
   offsetFromRoot,
   projectRootDir,
   ProjectType,
   toFileName,
-  updateWorkspace
+  updateWorkspace,
 } from '@nrwl/workspace';
 
 import { angularVersion } from '@nrwl/angular/src/utils/versions'; // read from package.json instead
@@ -88,14 +88,14 @@ export default function (input: NxWebcomponentSchematicSchema): Rule {
       root: options.projectRoot,
       sourceRoot: `${options.projectRoot}/src`,
     }),
-    addDepsToPackageJson({
+    updatePackageJsonDependencies({
       '@angular/elements' : angularVersion
     }, {
       'ngx-build-plus' : '*',
-      'http-server' : '*'
-    }),
+    }, true),
     updateWorkspace((workspace) => {
       const project = workspace.projects.get(options.projectName);
+      workspace.extensions
 
       const build_target = project.targets.get('build');
 
