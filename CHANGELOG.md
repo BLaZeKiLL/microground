@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/BLaZeKiLL/microground/compare/v1.1.0...v1.1.1) (2020-12-23)
+
+
+### Bug Fixes
+
+* Merge pull request [#12](https://github.com/BLaZeKiLL/microground/issues/12) from BLaZeKiLL/fix/nx-webcomponents-dependency ([27d9882](https://github.com/BLaZeKiLL/microground/commit/27d9882c10e5c71b8d9722827e0974c40f178b5d))
+
 # [1.1.0](https://github.com/BLaZeKiLL/microground/compare/v1.0.1...v1.1.0) (2020-12-15)
 
 
