@@ -2,15 +2,22 @@
   "name": "@codeblaze/nx-webcomponent",
   "version": "1.1.0",
   "main": "src/index.js",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BLaZeKiLL/microground"
+  },
   "schematics": "./collection.json",
   "builders": "./builders.json",
   "publishConfig": {
     "access": "public"
   },
   "peerDependencies": {
-    "@nrwl/workspace": "*"
+    "@nrwl/workspace": "*",
+    "@nrwl/angular": "*",
+    "@angular/elements": "*"
   },
   "dependencies": {
-    "@nrwl/angular": "*"
+    "http-server": "*"
   }
 }
