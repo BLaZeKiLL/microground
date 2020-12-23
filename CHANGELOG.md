@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/BLaZeKiLL/microground/compare/v1.1.1...v1.1.2) (2020-12-23)
+
+
+### Bug Fixes
+
+* Merge pull request [#13](https://github.com/BLaZeKiLL/microground/issues/13) from BLaZeKiLL/fix/nx-wc-dep ([651774c](https://github.com/BLaZeKiLL/microground/commit/651774cc04e9ddb6e17e5c59bcc4449cb7ebb151))
+
 ## [1.1.1](https://github.com/BLaZeKiLL/microground/compare/v1.1.0...v1.1.1) (2020-12-23)
 
 
