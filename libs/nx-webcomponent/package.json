@@ -13,11 +13,12 @@
     "access": "public"
   },
   "peerDependencies": {
-    "@nrwl/workspace": "*",
-    "@nrwl/angular": "*",
-    "@angular/elements": "*"
+    "@nrwl/workspace": "*"
   },
   "dependencies": {
-    "http-server": "*"
+    "@nrwl/angular": "*",
+    "@angular/elements": "*",
+    "http-server": "*",
+    "ngx-build-plus": "*"
   }
 }
