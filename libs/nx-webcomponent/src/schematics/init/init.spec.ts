@@ -8,14 +8,15 @@ import { InitSchematicSchema } from "./schema";
 
 describe('init schematic', () => {
 
-  let tree: Tree;
+  let appTree: Tree;
 
   beforeEach(() => {
-    tree = createEmptyWorkspace(Tree.empty());
+    appTree = Tree.empty()
+    appTree = createEmptyWorkspace(appTree);
   });
 
   it('should update package.json', async () => {
-    await runSchematic('init', {} as InitSchematicSchema, tree);
+    const tree = await runSchematic('init', {} as InitSchematicSchema, appTree);
 
     const { dependencies, devDependencies } = readJsonInTree(tree, 'package.json');
 

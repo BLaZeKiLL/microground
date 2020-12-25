@@ -89,7 +89,6 @@ export default function (input: ApplicationSchematicSchema): Rule {
     }),
     updateWorkspace((workspace) => {
       const project = workspace.projects.get(options.projectName);
-      workspace.extensions
 
       const build_target = project.targets.get('build');
 
