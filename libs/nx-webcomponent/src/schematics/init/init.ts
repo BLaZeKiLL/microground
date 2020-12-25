@@ -10,9 +10,9 @@ import {
 
 import { angularVersion } from '@nrwl/angular/src/utils/versions';
 
-import { InitGeneratorSchema } from './schema';
+import { InitSchematicSchema } from './schema';
 
-function updateDependencies(options : InitGeneratorSchema) : Rule {
+function updateDependencies(options : InitSchematicSchema) : Rule {
   const nx_version = readJsonFile('package.json').devDependencies['@nrwl/workspace'];
 
   return addDepsToPackageJson({
@@ -23,7 +23,7 @@ function updateDependencies(options : InitGeneratorSchema) : Rule {
   }, !options.skipInstall)
 }
 
-export default function (options : InitGeneratorSchema) : Rule {
+export default function (options : InitSchematicSchema) : Rule {
   return chain([
     updateDependencies(options)
   ]);

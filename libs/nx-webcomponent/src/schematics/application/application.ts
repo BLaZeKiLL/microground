@@ -19,11 +19,11 @@ import {
   toFileName,
   updateWorkspace,
 } from '@nrwl/workspace';
+
 import init from '../init/init';
+import { ApplicationSchematicSchema } from './schema';
 
-import { NxWebcomponentSchematicSchema } from './schema';
-
-interface NormalizedSchema extends NxWebcomponentSchematicSchema {
+interface NormalizedSchema extends ApplicationSchematicSchema {
   projectName: string;
   projectRoot: string;
   projectDirectory: string;
@@ -31,7 +31,7 @@ interface NormalizedSchema extends NxWebcomponentSchematicSchema {
 }
 
 function normalizeOptions(
-  options: NxWebcomponentSchematicSchema
+  options: ApplicationSchematicSchema
 ): NormalizedSchema {
   const name = toFileName(options.name);
   const projectDirectory = options.directory
@@ -77,7 +77,7 @@ function updateFiles(options: NormalizedSchema): Rule {
  *  - modify app module
  * @param input scheamtic execution options
  */
-export default function (input: NxWebcomponentSchematicSchema): Rule {
+export default function (input: ApplicationSchematicSchema): Rule {
   const options = normalizeOptions(input);
 
   return chain([

@@ -1,6 +1,6 @@
 import { JsonObject } from '@angular-devkit/core';
 
-export interface NxWebcomponentSchematicSchema extends JsonObject {
+export interface ApplicationSchematicSchema extends JsonObject {
   name: string;
   tags?: string;
   directory?: string;
