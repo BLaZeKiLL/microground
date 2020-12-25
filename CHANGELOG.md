@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/BLaZeKiLL/microground/compare/v1.1.2...v1.2.0) (2020-12-25)
+
+
+### Features
+
+* Merge pull request [#14](https://github.com/BLaZeKiLL/microground/issues/14) from BLaZeKiLL/feat/nx-webcomponent-init ([2088b0b](https://github.com/BLaZeKiLL/microground/commit/2088b0b64ba4c09a463a57bb36b17d4c39eeadea))
+
 ## [1.1.2](https://github.com/BLaZeKiLL/microground/compare/v1.1.1...v1.1.2) (2020-12-23)
 
 
