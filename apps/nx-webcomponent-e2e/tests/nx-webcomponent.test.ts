@@ -27,7 +27,7 @@ describe('nx-webcomponent e2e', () => {
     expect(result.stdout).toContain('scripts.js');
     expect(result.stdout).toContain('polyfills.js');
     expect(result.stdout).toContain('main.js');
-    expect(result.stdout).toContain('styles.js');
+    expect(result.stdout).toContain('styles.css');
     expect(result.stdout).not.toContain('vendor.js');
     expect(result.stdout).not.toContain('runtime.js');
 

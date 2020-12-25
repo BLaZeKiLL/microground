@@ -12,7 +12,6 @@ import {
 
 import {
   addProjectToNxJsonInTree,
-  updatePackageJsonDependencies,
   names,
   offsetFromRoot,
   projectRootDir,
@@ -21,11 +20,10 @@ import {
   updateWorkspace,
 } from '@nrwl/workspace';
 
-import { angularVersion } from '@nrwl/angular/src/utils/versions'; // read from package.json instead
+import init from '../init/init';
+import { ApplicationSchematicSchema } from './schema';
 
-import { NxWebcomponentSchematicSchema } from './schema';
-
-interface NormalizedSchema extends NxWebcomponentSchematicSchema {
+interface NormalizedSchema extends ApplicationSchematicSchema {
   projectName: string;
   projectRoot: string;
   projectDirectory: string;
@@ -33,7 +31,7 @@ interface NormalizedSchema extends NxWebcomponentSchematicSchema {
 }
 
 function normalizeOptions(
-  options: NxWebcomponentSchematicSchema
+  options: ApplicationSchematicSchema
 ): NormalizedSchema {
   const name = toFileName(options.name);
   const projectDirectory = options.directory
@@ -79,23 +77,18 @@ function updateFiles(options: NormalizedSchema): Rule {
  *  - modify app module
  * @param input scheamtic execution options
  */
-export default function (input: NxWebcomponentSchematicSchema): Rule {
+export default function (input: ApplicationSchematicSchema): Rule {
   const options = normalizeOptions(input);
 
   return chain([
+    init(options),
     externalSchematic('@nrwl/angular', 'application', {
       name: options.projectName,
       root: options.projectRoot,
       sourceRoot: `${options.projectRoot}/src`,
     }),
-    updatePackageJsonDependencies({
-      '@angular/elements' : angularVersion
-    }, {
-      'ngx-build-plus' : '*',
-    }, true),
     updateWorkspace((workspace) => {
       const project = workspace.projects.get(options.projectName);
-      workspace.extensions
 
       const build_target = project.targets.get('build');
 
