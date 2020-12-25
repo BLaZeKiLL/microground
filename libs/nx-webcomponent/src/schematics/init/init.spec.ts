@@ -1,26 +1,21 @@
-import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
+import { Tree } from '@angular-devkit/schematics';
+import { readJsonInTree } from '@nrwl/workspace';
+import { createEmptyWorkspace } from '@nrwl/workspace/testing';
 
-import {
-  Tree,
-  readJson,
-} from '@nrwl/devkit';
-
-import schematic from './init';
-import { InitGeneratorSchema } from './schema';
+import { runSchematic } from "../../testing/testing";
 
 describe('init schematic', () => {
 
-  let appTree: Tree;
-  const options: InitGeneratorSchema = { };
+  let tree: Tree;
 
   beforeEach(() => {
-    appTree = createTreeWithEmptyWorkspace();
+    tree = createEmptyWorkspace(Tree.empty());
   });
 
-  it('should run successfully', () => {
-    schematic(options);
+  it('should run successfully', async () => {
+    await runSchematic('init', {}, tree);
 
-    const { dependencies, devDependencies } = readJson(appTree, 'package');
+    const { dependencies, devDependencies } = readJsonInTree(tree, 'package.json')
 
     expect(dependencies).toHaveProperty('@angular/elements');
     expect(devDependencies).toHaveProperty('@nrwl/angular');
