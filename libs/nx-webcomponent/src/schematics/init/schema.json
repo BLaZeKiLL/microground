@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "cli": "nx",
+  "id": "Init",
+  "title": "",
+  "type": "object",
+  "properties": {
+    "skipInstall": {
+      "type": "boolean",
+      "description": "Skip installing after adding angular",
+      "default": false
+    }
+  },
+  "required": []
+}
