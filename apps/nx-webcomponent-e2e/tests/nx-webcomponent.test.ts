@@ -16,7 +16,7 @@ describe('nx-webcomponent e2e', () => {
     );
 
     await runNxCommandAsync(
-      `generate @codeblaze/nx-webcomponent:application ${plugin}`
+      `generate @codeblaze/nx-webcomponent:application ${plugin} --no-interactive`
     );
 
     expect(Object.keys(readJson('nx.json').projects)).toContain(plugin);
