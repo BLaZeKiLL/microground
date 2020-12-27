@@ -83,7 +83,7 @@ export default function (input: ApplicationSchematicSchema): Rule {
   return chain([
     init(options),
     externalSchematic('@nrwl/angular', 'application', {
-      name: options.projectName,
+      ...options,
       root: options.projectRoot,
       sourceRoot: `${options.projectRoot}/src`,
     }),
