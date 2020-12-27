@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/BLaZeKiLL/microground/compare/v1.2.0...v1.2.1) (2020-12-27)
+
+
+### Bug Fixes
+
+* Merge pull request [#16](https://github.com/BLaZeKiLL/microground/issues/16) from BLaZeKiLL/fix/angular-options ([cf9097b](https://github.com/BLaZeKiLL/microground/commit/cf9097b168d2553fc1620fa289b530d81773eda9))
+
 # [1.2.0](https://github.com/BLaZeKiLL/microground/compare/v1.1.2...v1.2.0) (2020-12-25)
 
 
