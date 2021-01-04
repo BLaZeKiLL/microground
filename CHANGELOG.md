@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/BLaZeKiLL/microground/compare/v1.2.1...v1.3.0) (2021-01-04)
+
+
+### Features
+
+* Merge pull request [#17](https://github.com/BLaZeKiLL/microground/issues/17) from BLaZeKiLL/feat/ngx-build-plus-schematics ([3b83881](https://github.com/BLaZeKiLL/microground/commit/3b838812a313155097425eda55118450b6a597dc))
+
 ## [1.2.1](https://github.com/BLaZeKiLL/microground/compare/v1.2.0...v1.2.1) (2020-12-27)
 
 
