@@ -1,5 +1,5 @@
 import { Tree } from '@angular-devkit/schematics';
-import { readNxJsonInTree, readJsonInTree, renameSyncInTree } from '@nrwl/workspace';
+import { readNxJsonInTree, readWorkspace } from '@nrwl/workspace';
 import { createEmptyWorkspace } from '@nrwl/workspace/testing';
 
 import { runSchematic } from "../../testing/testing";
@@ -14,14 +14,6 @@ describe('init schematic', () => {
   beforeEach(() => {
     appTree = Tree.empty()
     appTree = createEmptyWorkspace(appTree);
-
-    // TODO : why is this required for the test to pass ?
-    renameSyncInTree(appTree, 'workspace.json', 'angular.json', (error) => {
-      if (error) {
-        console.error('can\'t rename workspace');
-        console.error(error);
-      }
-    });
   });
 
   it('should create a web-component angular application', async () => {
@@ -29,7 +21,7 @@ describe('init schematic', () => {
       name : app_name
     } as ApplicationSchematicSchema, appTree);
 
-    const workspace = readJsonInTree(tree, 'angular.json');
+    const workspace = readWorkspace(tree);
     const nx = readNxJsonInTree(tree);
     const project = workspace.projects[app_name];
 
