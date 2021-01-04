@@ -11,7 +11,6 @@ import {
 } from '@angular-devkit/schematics';
 
 import {
-  addProjectToNxJsonInTree,
   names,
   offsetFromRoot,
   projectRootDir,
@@ -20,8 +19,9 @@ import {
   updateWorkspace,
 } from '@nrwl/workspace';
 
-import init from '../init/init';
+import { renameWorkspaceToAngular, renameWorkspaceToNx } from '../../utils/workspace';
 import { ApplicationSchematicSchema } from './schema';
+import init from '../init/init';
 
 interface NormalizedSchema extends ApplicationSchematicSchema {
   projectName: string;
@@ -127,10 +127,9 @@ export default function (input: ApplicationSchematicSchema): Rule {
         }
       });
     }),
-    addProjectToNxJsonInTree(options.projectName, {
-      tags: options.parsedTags,
-    }),
-    externalSchematic('@angular/elements', 'ng-add', { project: options.projectName }),
+    renameWorkspaceToAngular,
+    externalSchematic('ngx-build-plus', 'wc-polyfill', { project: options.projectName }),
+    renameWorkspaceToNx,
     updateFiles(options)
   ]);
 }
