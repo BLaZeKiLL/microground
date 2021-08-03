@@ -29,23 +29,26 @@
     }
   },
   "projects": {
-    "wc-fabric-core": {
-      "tags": []
-    },
-    "wc-fabric-angular": {
-      "tags": []
-    },
-    "samples-wc-angular": {
-      "tags": []
-    },
     "nx-webcomponent": {
       "tags": []
     },
     "nx-webcomponent-e2e": {
       "tags": [],
-      "implicitDependencies": [
-        "nx-webcomponent"
-      ]
+      "implicitDependencies": ["nx-webcomponent"]
+    },
+    "wc-fabric-angular": {
+      "tags": []
+    },
+    "wc-fabric-core": {
+      "tags": []
     }
+  },
+  "targetDependencies": {
+    "build": [
+      {
+        "target": "build",
+        "projects": "dependencies"
+      }
+    ]
   }
 }

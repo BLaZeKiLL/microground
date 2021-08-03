@@ -1,219 +1,6 @@
 {
   "version": 1,
   "projects": {
-    "wc-fabric-core": {
-      "root": "libs/wc-fabric/core",
-      "sourceRoot": "libs/wc-fabric/core/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["libs/wc-fabric/core/**/*.ts"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/wc-fabric/core/jest.config.js",
-            "passWithNoTests": true
-          },
-          "outputs": ["coverage/libs/wc-fabric/core"]
-        },
-        "build": {
-          "builder": "@nrwl/node:package",
-          "options": {
-            "outputPath": "dist/libs/wc-fabric/core",
-            "tsConfig": "libs/wc-fabric/core/tsconfig.lib.json",
-            "packageJson": "libs/wc-fabric/core/package.json",
-            "main": "libs/wc-fabric/core/src/index.ts",
-            "assets": ["libs/wc-fabric/core/*.md"]
-          },
-          "outputs": ["{options.outputPath}"]
-        }
-      }
-    },
-    "wc-fabric-angular": {
-      "projectType": "library",
-      "root": "libs/wc-fabric/angular",
-      "sourceRoot": "libs/wc-fabric/angular/src",
-      "prefix": "microground",
-      "architect": {
-        "build": {
-          "builder": "@nrwl/angular:package",
-          "options": {
-            "tsConfig": "libs/wc-fabric/angular/tsconfig.lib.json",
-            "project": "libs/wc-fabric/angular/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "libs/wc-fabric/angular/tsconfig.lib.prod.json"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/wc-fabric/angular/src/**/*.ts",
-              "libs/wc-fabric/angular/src/**/*.html",
-              "libs/wc-fabric/angular/src/**/*.html",
-              "libs/wc-fabric/angular/src/**/*.html",
-              "libs/wc-fabric/angular/src/**/*.html",
-              "libs/wc-fabric/angular/src/**/*.html",
-              "libs/wc-fabric/angular/src/**/*.html",
-              "libs/wc-fabric/angular/src/**/*.html",
-              "libs/wc-fabric/angular/src/**/*.html"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/wc-fabric/angular/jest.config.js",
-            "passWithNoTests": true
-          },
-          "outputs": ["coverage/libs/wc-fabric/angular"]
-        }
-      },
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "scss"
-        }
-      }
-    },
-    "samples-wc-angular": {
-      "projectType": "application",
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "scss"
-        }
-      },
-      "root": "apps/samples/wc-angular",
-      "sourceRoot": "apps/samples/wc-angular/src",
-      "prefix": "microground",
-      "architect": {
-        "build": {
-          "builder": "ngx-build-plus:browser",
-          "options": {
-            "outputPath": "dist/apps/samples/wc-angular",
-            "index": "apps/samples/wc-angular/src/index.html",
-            "main": "apps/samples/wc-angular/src/main.ts",
-            "polyfills": "apps/samples/wc-angular/src/polyfills.ts",
-            "tsConfig": "apps/samples/wc-angular/tsconfig.app.json",
-            "extraWebpackConfig": "apps/samples/wc-angular/webpack.config.js",
-            "singleBundle": true,
-            "aot": true,
-            "assets": [
-              "apps/samples/wc-angular/src/favicon.ico",
-              "apps/samples/wc-angular/src/assets"
-            ],
-            "styles": ["apps/samples/wc-angular/src/styles.scss"],
-            "scripts": [
-              "node_modules/rxjs/bundles/rxjs.umd.js",
-              "node_modules/@angular/core/bundles/core.umd.js",
-              "node_modules/@angular/common/bundles/common.umd.js",
-              "node_modules/@angular/common/bundles/common-http.umd.js",
-              "node_modules/@angular/compiler/bundles/compiler.umd.js",
-              "node_modules/@angular/elements/bundles/elements.umd.js",
-              "node_modules/@angular/platform-browser/bundles/platform-browser.umd.js",
-              "node_modules/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js"
-            ]
-          },
-          "configurations": {
-            "production": {
-              "fileReplacements": [
-                {
-                  "replace": "apps/samples/wc-angular/src/environments/environment.ts",
-                  "with": "apps/samples/wc-angular/src/environments/environment.prod.ts"
-                }
-              ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "extractCss": true,
-              "namedChunks": false,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "6kb",
-                  "maximumError": "10kb"
-                }
-              ]
-            }
-          }
-        },
-        "serve": {
-          "builder": "./dist/libs/nx-webcomponent:serve",
-          "options": {
-            "buildTarget": "samples-wc-angular:build"
-          }
-        },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "browserTarget": "samples-wc-angular:build"
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "apps/samples/wc-angular/src/**/*.ts",
-              "apps/samples/wc-angular/src/**/*.html"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "apps/samples/wc-angular/jest.config.js",
-            "passWithNoTests": true
-          },
-          "outputs": ["coverage/apps/samples/wc-angular"]
-        },
-        "storybook": {
-          "builder": "@nrwl/storybook:storybook",
-          "options": {
-            "uiFramework": "@storybook/angular",
-            "port": 4400,
-            "config": {
-              "configFolder": "apps/samples/wc-angular/.storybook"
-            }
-          },
-          "configurations": {
-            "ci": {
-              "quiet": true
-            }
-          }
-        },
-        "build-storybook": {
-          "builder": "@nrwl/storybook:build",
-          "options": {
-            "uiFramework": "@storybook/angular",
-            "outputPath": "dist/storybook/samples-wc-angular",
-            "config": {
-              "configFolder": "apps/samples/wc-angular/.storybook"
-            }
-          },
-          "configurations": {
-            "ci": {
-              "quiet": true
-            }
-          },
-          "outputs": ["{options.outputPath}"]
-        }
-      }
-    },
     "nx-webcomponent": {
       "root": "libs/nx-webcomponent",
       "sourceRoot": "libs/nx-webcomponent/src",
@@ -273,10 +60,90 @@
           "builder": "@nrwl/nx-plugin:e2e",
           "options": {
             "target": "nx-webcomponent:build",
-            "npmPackageName": "@codeblaze/nx-webcomponent",
-            "pluginOutputPath": "dist/libs/nx-webcomponent",
             "jestConfig": "apps/nx-webcomponent-e2e/jest.config.js"
           }
+        }
+      }
+    },
+    "wc-fabric-angular": {
+      "projectType": "library",
+      "root": "libs/wc-fabric/angular",
+      "sourceRoot": "libs/wc-fabric/angular/src",
+      "prefix": "microground",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:package",
+          "options": {
+            "tsConfig": "libs/wc-fabric/angular/tsconfig.lib.json",
+            "project": "libs/wc-fabric/angular/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/wc-fabric/angular/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/wc-fabric/angular/src/**/*.ts",
+              "libs/wc-fabric/angular/src/**/*.html",
+              "libs/wc-fabric/angular/src/**/*.html",
+              "libs/wc-fabric/angular/src/**/*.html",
+              "libs/wc-fabric/angular/src/**/*.html",
+              "libs/wc-fabric/angular/src/**/*.html",
+              "libs/wc-fabric/angular/src/**/*.html",
+              "libs/wc-fabric/angular/src/**/*.html",
+              "libs/wc-fabric/angular/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/wc-fabric/angular/jest.config.js",
+            "passWithNoTests": true
+          },
+          "outputs": ["coverage/libs/wc-fabric/angular"]
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "wc-fabric-core": {
+      "root": "libs/wc-fabric/core",
+      "sourceRoot": "libs/wc-fabric/core/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/wc-fabric/core/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/wc-fabric/core/jest.config.js",
+            "passWithNoTests": true
+          },
+          "outputs": ["coverage/libs/wc-fabric/core"]
+        },
+        "build": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "outputPath": "dist/libs/wc-fabric/core",
+            "tsConfig": "libs/wc-fabric/core/tsconfig.lib.json",
+            "packageJson": "libs/wc-fabric/core/package.json",
+            "main": "libs/wc-fabric/core/src/index.ts",
+            "assets": ["libs/wc-fabric/core/*.md"]
+          },
+          "outputs": ["{options.outputPath}"]
         }
       }
     }

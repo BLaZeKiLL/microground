@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/schema",
-  "id": "NxWebcomponent",
+  "$id": "NxWebcomponent",
   "title": "",
   "type": "object",
   "properties": {
@@ -120,8 +120,8 @@
     "linter": {
       "description": "The tool to use for running lint checks.",
       "type": "string",
-      "enum": ["tslint", "eslint"],
-      "default": "tslint"
+      "enum": ["eslint", "none"],
+      "default": "eslint"
     },
     "backendProject": {
       "type": "string",

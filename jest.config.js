@@ -1,9 +1,11 @@
+const { getJestProjects } = require('@nrwl/jest');
+
 module.exports = {
   projects: [
-    '<rootDir>/libs/wc-fabric/core',
-    '<rootDir>/libs/wc-fabric/angular',
-    '<rootDir>/apps/samples/webcomponents',
-    '<rootDir>/libs/nx-webcomponent',
-    '<rootDir>/apps/nx-webcomponent-e2e',
+    ...getJestProjects(),
+    // '<rootDir>/libs/wc-fabric/core',
+    // '<rootDir>/libs/wc-fabric/angular',
+    // '<rootDir>/libs/nx-webcomponent',
+    // '<rootDir>/apps/nx-webcomponent-e2e',
   ],
 };
