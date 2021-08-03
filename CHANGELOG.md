@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/BLaZeKiLL/microground/compare/v1.3.0...v1.4.0) (2021-08-03)
+
+
+### Features
+
+* Nx and Angular Upgrade ([#18](https://github.com/BLaZeKiLL/microground/issues/18)) ([edca4b8](https://github.com/BLaZeKiLL/microground/commit/edca4b8d33ae5eea6ac19a872d4ba0ddb5d8c512))
+
 # [1.3.0](https://github.com/BLaZeKiLL/microground/compare/v1.2.1...v1.3.0) (2021-01-04)
 
 
