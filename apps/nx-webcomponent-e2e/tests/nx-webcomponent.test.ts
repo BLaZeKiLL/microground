@@ -7,7 +7,7 @@ import {
 
 describe('nx-webcomponent e2e', () => {
 
-  it('should create nx-webcomponent application and be able to build it', async (done) => {
+  it('should create nx-webcomponent application and be able to build it', async () => {
     const plugin = uniq('webcomponents');
 
     ensureNxProject(
@@ -30,8 +30,6 @@ describe('nx-webcomponent e2e', () => {
     expect(result.stdout).toContain('styles.css');
     expect(result.stdout).not.toContain('vendor.js');
     expect(result.stdout).not.toContain('runtime.js');
-
-    done();
   }, 500000);
 
 });
