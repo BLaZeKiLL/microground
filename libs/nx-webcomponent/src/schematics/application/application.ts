@@ -87,13 +87,24 @@ export default function (input: ApplicationSchematicSchema): Rule {
       root: options.projectRoot,
       sourceRoot: `${options.projectRoot}/src`,
     }),
-    updateWorkspace((workspace) => {
+    renameWorkspaceToAngular,
+    externalSchematic('ngx-build-plus', 'wc-polyfill', { project: options.projectName }),
+    renameWorkspaceToNx,
+    updateWorkspace(workspace => {
       const project = workspace.projects.get(options.projectName);
 
       const build_target = project.targets.get('build');
 
       const t_options = build_target.options;
       const t_config = build_target.configurations;
+
+      const wc_scripts = [...(t_options.scripts as [])];
+      const prod_config = t_config.production;
+      const dev_config = t_config.development;
+
+      delete t_options.scripts;
+      prod_config.budgets[0].maximumWarning = '2mb';
+      prod_config.budgets[0].maximumError = '4mb';
 
       project.targets.delete('build');
       project.targets.delete('serve');
@@ -103,20 +114,43 @@ export default function (input: ApplicationSchematicSchema): Rule {
         builder: 'ngx-build-plus:browser',
         options: {
           ...t_options,
-          singleBundle: true,
-          extraWebpackConfig: `${options.projectRoot}/webpack.config.js`,
-          scripts: [
-            "node_modules/rxjs/bundles/rxjs.umd.js",
-            "node_modules/@angular/core/bundles/core.umd.js",
-            "node_modules/@angular/common/bundles/common.umd.js",
-            "node_modules/@angular/common/bundles/common-http.umd.js",
-            "node_modules/@angular/compiler/bundles/compiler.umd.js",
-            "node_modules/@angular/elements/bundles/elements.umd.js",
-            "node_modules/@angular/platform-browser/bundles/platform-browser.umd.js",
-            "node_modules/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js"
-          ]
+          singleBundle: true
         },
-        configurations: t_config
+        configurations: {
+          "production-external": {
+            ...prod_config,
+            extraWebpackConfig: `${options.projectRoot}/webpack.config.js`,
+            scripts: [
+              "node_modules/rxjs/bundles/rxjs.umd.js",
+              "node_modules/@angular/core/bundles/core.umd.js",
+              "node_modules/@angular/common/bundles/common.umd.js",
+              "node_modules/@angular/common/bundles/common-http.umd.js",
+              "node_modules/@angular/compiler/bundles/compiler.umd.js",
+              "node_modules/@angular/elements/bundles/elements.umd.js",
+              "node_modules/@angular/platform-browser/bundles/platform-browser.umd.js",
+              "node_modules/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js",
+              ...wc_scripts
+            ]
+          },
+          "production-bundle": {...prod_config},
+          "development-external": {
+            ...dev_config,
+            extraWebpackConfig: `${options.projectRoot}/webpack.config.js`,
+            scripts: [
+              "node_modules/rxjs/bundles/rxjs.umd.js",
+              "node_modules/@angular/core/bundles/core.umd.js",
+              "node_modules/@angular/common/bundles/common.umd.js",
+              "node_modules/@angular/common/bundles/common-http.umd.js",
+              "node_modules/@angular/compiler/bundles/compiler.umd.js",
+              "node_modules/@angular/elements/bundles/elements.umd.js",
+              "node_modules/@angular/platform-browser/bundles/platform-browser.umd.js",
+              "node_modules/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js",
+              ...wc_scripts
+            ]
+          },
+          "development-bundle": {...dev_config}
+        },
+        defaultConfiguration: 'development-bundle'
       });
 
       project.targets.add({
@@ -127,9 +161,6 @@ export default function (input: ApplicationSchematicSchema): Rule {
         }
       });
     }),
-    renameWorkspaceToAngular,
-    externalSchematic('ngx-build-plus', 'wc-polyfill', { project: options.projectName }),
-    renameWorkspaceToNx,
     updateFiles(options)
   ]);
 }

@@ -5,31 +5,83 @@ import {
   uniq,
 } from '@nrwl/nx-plugin/testing';
 
-describe('nx-webcomponent e2e', () => {
+describe('nx-webcomponent', () => {
 
-  it('should create nx-webcomponent application and be able to build it', async () => {
-    const plugin = uniq('webcomponents');
+  const app = uniq('webcomponents');
 
+  beforeAll(async () => {
     ensureNxProject(
       '@codeblaze/nx-webcomponent',
       'dist/libs/nx-webcomponent'
     );
 
     await runNxCommandAsync(
-      `generate @codeblaze/nx-webcomponent:application ${plugin} --no-interactive`
+      `generate @codeblaze/nx-webcomponent:application ${app} --no-interactive`
     );
+  }, 300000);
 
-    expect(Object.keys(readJson('nx.json').projects)).toContain(plugin);
+  it('should create nx-webcomponent application', () => {
+    expect(Object.keys(readJson('nx.json').projects)).toContain(app);
+  });
 
-    const result = await runNxCommandAsync(`build ${plugin}`);
+  describe('build', () => {
+    it('production-external', async () => {
+      const result = await runNxCommandAsync(`build ${app} -c production-external`);
 
-    expect(result.stdout).toContain(`nx build ${plugin}`);
-    expect(result.stdout).toContain('scripts.js');
-    expect(result.stdout).toContain('polyfills.js');
-    expect(result.stdout).toContain('main.js');
-    expect(result.stdout).toContain('styles.css');
-    expect(result.stdout).not.toContain('vendor.js');
-    expect(result.stdout).not.toContain('runtime.js');
-  }, 500000);
+      expect(result.stdout).toContain('scripts');
+      expect(result.stdout).toContain('polyfills');
+      expect(result.stdout).toContain('polyfill-webcomp');
+      expect(result.stdout).toContain('polyfill-webcomp-es5');
+      expect(result.stdout).toContain('main');
+      expect(result.stdout).toContain('styles');
+
+      expect(result.stdout).toContain(`Build`);
+
+      expect(result.stdout).not.toContain('vendor');
+      expect(result.stdout).not.toContain('runtime');
+    }, 200000);
+
+    it('production-bundle', async () => {
+      const result = await runNxCommandAsync(`build ${app} -c production-bundle`);
+
+      expect(result.stdout).toContain('polyfills');
+      expect(result.stdout).toContain('main');
+      expect(result.stdout).toContain('styles');
+
+      expect(result.stdout).toContain(`Build`);
+
+      expect(result.stdout).not.toContain('vendor');
+      expect(result.stdout).not.toContain('runtime');
+    }, 200000);
+
+    it('development-external', async () => {
+      const result = await runNxCommandAsync(`build ${app} -c development-external`);
+
+      expect(result.stdout).toContain('scripts');
+      expect(result.stdout).toContain('polyfills');
+      expect(result.stdout).toContain('polyfill-webcomp');
+      expect(result.stdout).toContain('polyfill-webcomp-es5');
+      expect(result.stdout).toContain('main');
+      expect(result.stdout).toContain('styles');
+
+      expect(result.stdout).toContain(`Build`);
+
+      expect(result.stdout).not.toContain('vendor');
+      expect(result.stdout).not.toContain('runtime');
+    }, 200000);
+
+    it('development-bundle', async () => {
+      const result = await runNxCommandAsync(`build ${app} -c development-bundle`);
+
+      expect(result.stdout).toContain('polyfills');
+      expect(result.stdout).toContain('main');
+      expect(result.stdout).toContain('styles');
+
+      expect(result.stdout).toContain(`Build`);
+
+      expect(result.stdout).not.toContain('vendor');
+      expect(result.stdout).not.toContain('runtime');
+    }, 200000);
+  });
 
 });
