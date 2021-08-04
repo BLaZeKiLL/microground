@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/BLaZeKiLL/microground/compare/v1.4.0...v1.5.0) (2021-08-04)
+
+
+### Features
+
+* More bundling configs added ([#19](https://github.com/BLaZeKiLL/microground/issues/19)) ([a228d57](https://github.com/BLaZeKiLL/microground/commit/a228d574e5899b6cac38bcd68db97dc23dc20a6f))
+
 # [1.4.0](https://github.com/BLaZeKiLL/microground/compare/v1.3.0...v1.4.0) (2021-08-03)
 
 
