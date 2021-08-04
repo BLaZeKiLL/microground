@@ -36,7 +36,6 @@ describe('nx-webcomponent', () => {
       expect(result.stdout).toContain('styles');
 
       expect(result.stdout).toContain(`Build`);
-      expect(result.stdout).toContain(`Done`);
 
       expect(result.stdout).not.toContain('vendor');
       expect(result.stdout).not.toContain('runtime');
@@ -50,7 +49,6 @@ describe('nx-webcomponent', () => {
       expect(result.stdout).toContain('styles');
 
       expect(result.stdout).toContain(`Build`);
-      expect(result.stdout).toContain(`Done`);
 
       expect(result.stdout).not.toContain('vendor');
       expect(result.stdout).not.toContain('runtime');
@@ -67,7 +65,6 @@ describe('nx-webcomponent', () => {
       expect(result.stdout).toContain('styles');
 
       expect(result.stdout).toContain(`Build`);
-      expect(result.stdout).toContain(`Done`);
 
       expect(result.stdout).not.toContain('vendor');
       expect(result.stdout).not.toContain('runtime');
@@ -81,7 +78,6 @@ describe('nx-webcomponent', () => {
       expect(result.stdout).toContain('styles');
 
       expect(result.stdout).toContain(`Build`);
-      expect(result.stdout).toContain(`Done`);
 
       expect(result.stdout).not.toContain('vendor');
       expect(result.stdout).not.toContain('runtime');
