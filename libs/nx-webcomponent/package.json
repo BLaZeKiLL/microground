@@ -1,6 +1,6 @@
 {
   "name": "@codeblaze/nx-webcomponent",
-  "version": "1.7.1",
+  "version": "1.7.2",
   "main": "src/index.js",
   "license": "MIT",
   "repository": {

@@ -1,3 +1,10 @@
+## [1.7.2](https://github.com/BLaZeKiLL/microground/compare/v1.7.1...v1.7.2) (2021-08-05)
+
+
+### Bug Fixes
+
+* minor changes ([#23](https://github.com/BLaZeKiLL/microground/issues/23)) ([65ef305](https://github.com/BLaZeKiLL/microground/commit/65ef3057e3019f67fdfadfa70b54a5c33a183a77))
+
 ## [1.7.1](https://github.com/BLaZeKiLL/microground/compare/v1.7.0...v1.7.1) (2021-08-05)
 
 
