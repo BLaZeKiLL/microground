@@ -1,6 +1,6 @@
 import { APP_INITIALIZER, ModuleWithProviders, NgModule } from '@angular/core';
-import { loadBundle } from '@codeblaze/wc-fabric-core';
-import { WcFabricConfig } from './wc-fabric.config';
+import { WcFabricConfig } from './wc-fabric.model';
+import { AppLoaderService } from './app-loader.service';
 
 // @dynamic
 @NgModule()
@@ -12,11 +12,8 @@ export class WcFabricModule {
       providers: [
         {
           provide: APP_INITIALIZER,
-          useFactory: async () => {
-            config.bundles.forEach(
-              async (bundle) => await loadBundle(bundle.url, bundle.cache)
-            );
-            console.log(`[WC-FABRIC] ${config.bundles.length} bundles loaded`);
+          useFactory: async (loader: AppLoaderService) => {
+            config.apps.forEach(async (app) => await loader.loadApp(app));
           }
         }
       ]
