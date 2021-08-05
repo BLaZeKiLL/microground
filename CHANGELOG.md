@@ -1,3 +1,10 @@
+## [1.7.1](https://github.com/BLaZeKiLL/microground/compare/v1.7.0...v1.7.1) (2021-08-05)
+
+
+### Bug Fixes
+
+* Fix pks deps fixed ([#22](https://github.com/BLaZeKiLL/microground/issues/22)) ([103524b](https://github.com/BLaZeKiLL/microground/commit/103524bc96949a5ee64f4865f6b756632bb247a9))
+
 # [1.7.0](https://github.com/BLaZeKiLL/microground/compare/v1.6.0...v1.7.0) (2021-08-05)
 
 
