@@ -1,4 +1,4 @@
-export const loadBundle = (url : string, cache = false) : Promise<Event> => {
+export const loadBundle = (url : string, cache = true) : Promise<Event> => {
   return new Promise((resolve, reject) => {
     const script = document.createElement('script') as HTMLScriptElement;
 
@@ -14,7 +14,7 @@ export const loadBundle = (url : string, cache = false) : Promise<Event> => {
   });
 }
 
-export const loadStyle = (url : string, cache = false): Promise<Event> => {
+export const loadStyle = (url : string, cache = true): Promise<Event> => {
   return new Promise((resolve, reject) => {
     const link = document.createElement('link') as HTMLLinkElement;
 
