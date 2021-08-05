@@ -1,3 +1,10 @@
+# [1.8.0](https://github.com/BLaZeKiLL/microground/compare/v1.7.2...v1.8.0) (2021-08-05)
+
+
+### Features
+
+* serve configs added ([#24](https://github.com/BLaZeKiLL/microground/issues/24)) ([d8948d8](https://github.com/BLaZeKiLL/microground/commit/d8948d873247e942fc1bb1fa4cf62ffbb5c7b3a7))
+
 ## [1.7.2](https://github.com/BLaZeKiLL/microground/compare/v1.7.1...v1.7.2) (2021-08-05)
 
 
