@@ -1,0 +1,8 @@
+/* eslint-disable */
+const bundleInfoPlugin = require('./bundle-info-plugin');
+
+module.exports = {
+  "plugins": [
+    new bundleInfoPlugin()
+  ]
+}

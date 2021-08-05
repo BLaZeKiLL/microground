@@ -1,0 +1,36 @@
+/* eslint-disable */
+const fs = require('fs/promises');
+
+const NAME = '<%= projectName %>';
+
+class BundleInfoPlugin {
+
+  apply(compiler) {
+    compiler.hooks.afterEmit.tapPromise('BundleInfoPlugin', (compilation) => {
+      const assets = compilation.getAssets().map(x => x.name);
+      const bundles = assets.filter(x => x.endsWith('.js'));
+      const styles = assets.filter(x => x.endsWith('.css'));
+      const maps = assets.filter(x => x.endsWith('.map'));
+
+      const info = {
+        name: NAME,
+        bundles: {
+          main: [...bundles.filter(x => x.startsWith('main'))],
+          scripts: [...bundles.filter(x => x.startsWith('scripts'))],
+          polyfills: [...bundles.filter(x => x.startsWith('polyfill'))]
+        },
+        styles: styles,
+        maps: maps
+      };
+
+      const path = compilation.outputOptions.path;
+
+      console.log(`Writing Bundle Info For : ${NAME}`);
+
+      return fs.writeFile(path + '/bundle.json', JSON.stringify(info, null, 2), 'utf-8');
+    });
+  }
+
+}
+
+module.exports = BundleInfoPlugin;
