@@ -29,6 +29,9 @@
     }
   },
   "projects": {
+    "microground": {
+      "tags": []
+    },
     "nx-webcomponent": {
       "tags": []
     },

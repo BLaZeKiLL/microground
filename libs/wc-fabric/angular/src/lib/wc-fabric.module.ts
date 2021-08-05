@@ -12,9 +12,11 @@ export class WcFabricModule {
       providers: [
         {
           provide: APP_INITIALIZER,
-          useFactory: async (loader: AppLoaderService) => {
-            config.apps.forEach(async (app) => await loader.loadApp(app));
-          }
+          useFactory: (loader: AppLoaderService) => async () => {
+            await Promise.all(config.apps.map(async (app) => await loader.loadApp(app)));
+          },
+          deps: [AppLoaderService],
+          multi: true
         }
       ]
     };

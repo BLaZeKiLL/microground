@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const createElement = (id: string, tag: string, args: any = {}) : void => {
   const parent = document.getElementById(id);
 
@@ -8,12 +9,14 @@ export const createElement = (id: string, tag: string, args: any = {}) : void =>
   const element = document.createElement(tag);
 
   Object.keys(args).forEach(key => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (element as any)[key] = args[key];
   });
 
   parent.appendChild(element);
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const createElementWhenDefined = async (id: string, tag: string, args: any = {}) : Promise<void> => {
   const parent = document.getElementById(id);
 
@@ -24,6 +27,7 @@ export const createElementWhenDefined = async (id: string, tag: string, args: an
   const element = document.createElement(tag);
 
   Object.keys(args).forEach(key => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (element as any)[key] = args[key];
   });
 

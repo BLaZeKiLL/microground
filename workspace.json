@@ -1,6 +1,101 @@
 {
   "version": 1,
   "projects": {
+    "microground": {
+      "projectType": "application",
+      "root": "apps/microground",
+      "sourceRoot": "apps/microground/src",
+      "prefix": "mg",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/microground",
+            "index": "apps/microground/src/index.html",
+            "main": "apps/microground/src/main.ts",
+            "polyfills": "apps/microground/src/polyfills.ts",
+            "tsConfig": "apps/microground/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "apps/microground/src/favicon.ico",
+              "apps/microground/src/assets"
+            ],
+            "styles": ["apps/microground/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/microground/src/environments/environment.ts",
+                  "with": "apps/microground/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "microground:build:production",
+              "open": true
+            },
+            "development": {
+              "browserTarget": "microground:build:development",
+              "open": true
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "microground:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/microground/src/**/*.ts",
+              "apps/microground/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/microground"],
+          "options": {
+            "jestConfig": "apps/microground/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
     "nx-webcomponent": {
       "root": "libs/nx-webcomponent",
       "sourceRoot": "libs/nx-webcomponent/src",
@@ -153,11 +248,18 @@
   },
   "schematics": {
     "@nrwl/angular:application": {
+      "style": "scss",
+      "linter": "eslint",
       "unitTestRunner": "jest",
       "e2eTestRunner": "cypress"
     },
     "@nrwl/angular:library": {
+      "style": "scss",
+      "linter": "eslint",
       "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:component": {
+      "style": "scss"
     }
   }
 }

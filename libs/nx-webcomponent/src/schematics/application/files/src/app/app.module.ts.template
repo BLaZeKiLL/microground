@@ -13,7 +13,7 @@ export class AppModule implements DoBootstrap {
   constructor(private injector : Injector) {}
 
   ngDoBootstrap() {
-    customElements.define('wc-<%= projectName %>', createCustomElement(AppComponent, {injector: this.injector}));
+    customElements.define('<%= projectName %>', createCustomElement(AppComponent, {injector: this.injector}));
   }
 
 }
