@@ -1,7 +1,11 @@
 {
   "$schema": "../../../node_modules/ng-packagr/ng-package.schema.json",
   "dest": "../../../dist/libs/wc-fabric/angular",
+  "allowedNonPeerDependencies": ["@codeblaze/wc-fabric-core"],
   "lib": {
-    "entryFile": "src/index.ts"
+    "entryFile": "src/index.ts",
+    "umdModuleIds": {
+      "@codeblaze/wc-fabric-core": "wcFabricCore"
+    }
   }
 }
