@@ -11,10 +11,11 @@
     "access": "public"
   },
   "peerDependencies": {
-    "@angular/common": "^10.1.6",
-    "@angular/core": "^10.1.6"
+    "@angular/common": "*",
+    "@angular/core": "*"
   },
   "dependencies": {
-    "tslib": "^2.0.0"
+    "tslib": "^2.0.0",
+    "@codeblaze/wc-fabric-core": "*"
   }
 }
