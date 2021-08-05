@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/BLaZeKiLL/microground/compare/v1.6.0...v1.7.0) (2021-08-05)
+
+
+### Features
+
+* App Loader Implemented ([#21](https://github.com/BLaZeKiLL/microground/issues/21)) ([a384a9a](https://github.com/BLaZeKiLL/microground/commit/a384a9a058bb4f9b5f41267c715d09a0453099b9))
+
 # [1.6.0](https://github.com/BLaZeKiLL/microground/compare/v1.5.0...v1.6.0) (2021-08-05)
 
 
