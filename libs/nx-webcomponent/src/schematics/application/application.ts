@@ -162,9 +162,21 @@ export default function (input: ApplicationSchematicSchema): Rule {
       project.targets.add({
         name: 'serve',
         builder: '@codeblaze/nx-webcomponent:serve',
-        options: {
-          buildTarget: `${options.projectName}:build`
-        }
+        configurations: {
+          "production-bundle": {
+            buildTarget: `${options.projectName}:build:production-bundle`
+          },
+          "production-external": {
+            buildTarget: `${options.projectName}:build:production-external`
+          },
+          "development-bundle": {
+            buildTarget: `${options.projectName}:build:development-bundle`
+          },
+          "development-external": {
+            buildTarget: `${options.projectName}:build:development-external`
+          }
+        },
+        defaultConfiguration: 'development-bundle'
       });
     }),
     updateFiles(options)

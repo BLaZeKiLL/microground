@@ -13,7 +13,7 @@ export class AppLoaderService {
   ) {}
 
   public async loadApp(app: WcAppConfig): Promise<void> {
-    const info = await this.http.get<WcBundleInfo>(`${app.url}/bundle.json/?time=${Date.now()}`).toPromise();
+    const info = await this.http.get<WcBundleInfo>(`${app.url}/bundle.json?time=${Date.now()}`).toPromise();
 
     await Promise.all(info.bundles.main.map(async (bundle) => {
       await loadBundle(`${app.url}/${bundle}`, app.cache);
