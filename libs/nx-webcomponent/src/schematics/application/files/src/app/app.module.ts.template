@@ -4,6 +4,8 @@ import { NgModule, DoBootstrap, Injector } from '@angular/core';
 import { AppComponent } from './app.component';
 import { createCustomElement } from '@angular/elements';
 
+declare const VERSION: string;
+
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule],

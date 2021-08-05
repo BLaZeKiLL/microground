@@ -119,7 +119,7 @@ export default function (input: ApplicationSchematicSchema): Rule {
         configurations: {
           "production-external": {
             ...prod_config,
-            extraWebpackConfig: `${options.projectRoot}/webpack.config.js`,
+            extraWebpackConfig: `${options.projectRoot}/webpack/webpack-external.config.js`,
             scripts: [
               "node_modules/rxjs/bundles/rxjs.umd.js",
               "node_modules/@angular/core/bundles/core.umd.js",
@@ -132,10 +132,13 @@ export default function (input: ApplicationSchematicSchema): Rule {
               ...wc_scripts
             ]
           },
-          "production-bundle": {...prod_config},
+          "production-bundle": {
+            ...prod_config,
+            extraWebpackConfig: `${options.projectRoot}/webpack/webpack-bundle.config.js`,
+          },
           "development-external": {
             ...dev_config,
-            extraWebpackConfig: `${options.projectRoot}/webpack.config.js`,
+            extraWebpackConfig: `${options.projectRoot}/webpack/webpack-external.config.js`,
             scripts: [
               "node_modules/rxjs/bundles/rxjs.umd.js",
               "node_modules/@angular/core/bundles/core.umd.js",
@@ -148,7 +151,10 @@ export default function (input: ApplicationSchematicSchema): Rule {
               ...wc_scripts
             ]
           },
-          "development-bundle": {...dev_config}
+          "development-bundle": {
+            ...dev_config,
+            extraWebpackConfig: `${options.projectRoot}/webpack/webpack-bundle.config.js`,
+          }
         },
         defaultConfiguration: 'development-bundle'
       });
