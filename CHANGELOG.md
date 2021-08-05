@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/BLaZeKiLL/microground/compare/v1.5.0...v1.6.0) (2021-08-05)
+
+
+### Features
+
+* Bundle info webpack plugin created ([#20](https://github.com/BLaZeKiLL/microground/issues/20)) ([ac263c8](https://github.com/BLaZeKiLL/microground/commit/ac263c892a0a5e308880a2c417360cd464a74d0e))
+
 # [1.5.0](https://github.com/BLaZeKiLL/microground/compare/v1.4.0...v1.5.0) (2021-08-04)
 
 
