@@ -25,7 +25,7 @@ class BundleInfoPlugin {
 
       const path = compilation.outputOptions.path;
 
-      console.log(`Writing Bundle Info For : ${NAME}`);
+      console.log(`\n✔ Writing Bundle Info For : ${NAME}`);
 
       return fs.writeFile(path + '/bundle.json', JSON.stringify(info, null, 2), 'utf-8');
     });

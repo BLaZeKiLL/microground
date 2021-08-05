@@ -23,7 +23,7 @@ export default createBuilder((options : ServeBuilderSchema, context : BuilderCon
         const http_server = `${path.join(context.workspaceRoot, 'node_modules', '.bin', 'http-server')}`;
         const http_root = `${path.join(context.workspaceRoot, build.outputPath as string)}`;
 
-        const args = [http_root, `-p ${options.port}`, `-a ${options.host}`];
+        const args = [http_root, `-p ${options.port}`, `-a ${options.host}`, `--cors`];
 
         if (options.silent) {
           args.push('-s');
